@@ -1,0 +1,22 @@
+Funcionalidades Interativas:
+Controle de Rotação e Velocidade:
+
+Permita ao usuário controlar a velocidade e a direção da rotação do cubo ao redor dos três eixos (X, Y, Z). Isso pode ser feito com teclas ou sliders na interface.
+Integração de Física Básica:
+
+Implemente a simulação de física básica como a gravidade e o movimento do cubo no espaço. O usuário pode experimentar diferentes forças aplicadas ao cubo e ver como ele se move.
+Transformações 3D Interativas:
+
+Além da rotação, permita ao usuário aplicar translações e escalas ao cubo. Isso pode ser feito com controles de mouse para arrastar o cubo ou ajustar parâmetros de translação e escala.
+Visualização de Eixos e Orientação:
+
+Mostre visualmente os três eixos (X, Y, Z) e como as transformações afetam a orientação do cubo. Isso ajuda a ensinar conceitos de coordenadas espaciais e sistemas de referência.
+Elementos de Astronomia:
+
+Integre conceitos astronômicos, como movimentos planetários e lunares. Por exemplo, permita ao usuário simular órbitas ao redor de um objeto central, como o Sol, usando o cubo como um corpo celeste.
+Menus Interativos e Opções de Configuração:
+
+Crie menus interativos onde o usuário pode escolher diferentes cenários astronômicos, como simulações de sistemas solares ou movimentos de estrelas e planetas.
+Visualização de Matemática Aplicada:
+
+Use gráficos e visualizações para demonstrar conceitos matemáticos como transformações de matrizes, cálculos de ângulos e distâncias, e aplicação de equações físicas básicas.
