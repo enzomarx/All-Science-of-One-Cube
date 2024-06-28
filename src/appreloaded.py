@@ -1,0 +1,145 @@
+import pygame
+from pygame.locals import *
+from OpenGL.GL import *
+from OpenGL.GLUT import *
+from OpenGL.GLU import *
+import numpy as np
+
+# Função para desenhar um cubo
+def draw_cube():
+    glBegin(GL_QUADS)
+    
+    glColor3fv((0.8, 0.2, 0.2))  # Face vermelha
+    glVertex3fv((1, 1, -1))
+    glVertex3fv((1, -1, -1))
+    glVertex3fv((-1, -1, -1))
+    glVertex3fv((-1, 1, -1))
+
+    glColor3fv((0.2, 0.8, 0.2))  # Face verde
+    glVertex3fv((1, 1, 1))
+    glVertex3fv((1, -1, 1))
+    glVertex3fv((1, -1, -1))
+    glVertex3fv((1, 1, -1))
+
+    glColor3fv((0.2, 0.2, 0.8))  # Face azul
+    glVertex3fv((-1, 1, 1))
+    glVertex3fv((-1, -1, 1))
+    glVertex3fv((1, -1, 1))
+    glVertex3fv((1, 1, 1))
+
+    glColor3fv((0.8, 0.8, 0.2))  # Face amarela
+    glVertex3fv((-1, 1, -1))
+    glVertex3fv((-1, -1, -1))
+    glVertex3fv((-1, -1, 1))
+    glVertex3fv((-1, 1, 1))
+
+    glColor3fv((0.8, 0.2, 0.8))  # Face rosa
+    glVertex3fv((1, 1, -1))
+    glVertex3fv((1, 1, 1))
+    glVertex3fv((-1, 1, 1))
+    glVertex3fv((-1, 1, -1))
+
+    glColor3fv((0.2, 0.8, 0.8))  # Face ciano
+    glVertex3fv((1, -1, -1))
+    glVertex3fv((1, -1, 1))
+    glVertex3fv((-1, -1, 1))
+    glVertex3fv((-1, -1, -1))
+
+    glEnd()
+
+# Função para configurar o background
+def setup_background():
+    glClearColor(0.0, 0.0, 0.2, 1.0)  # Azul tech
+
+# Função para desenhar os eixos
+def draw_axes():
+    glBegin(GL_LINES)
+    # Eixo X (vermelho)
+    glColor3f(1, 0, 0)
+    glVertex3f(0, 0, 0)
+    glVertex3f(5, 0, 0)
+    # Eixo Y (verde)
+    glColor3f(0, 1, 0)
+    glVertex3f(0, 0, 0)
+    glVertex3f(0, 5, 0)
+    # Eixo Z (azul)
+    glColor3f(0, 0, 1)
+    glVertex3f(0, 0, 0)
+    glVertex3f(0, 0, 5)
+    glEnd()
+
+# Função principal
+def main():
+    pygame.init()
+    display = (800, 600)
+    pygame.display.set_mode(display, DOUBLEBUF|OPENGL)
+    pygame.display.set_caption("MARK")
+
+    gluPerspective(45, (display[0]/display[1]), 0.1, 50.0)
+    glTranslatef(0.0, 0.0, -10)
+
+    clock = pygame.time.Clock()
+
+    setup_background()
+
+    angle_x = 200  # Ângulo de rotação inicial em torno do eixo X
+    angle_y = 0  # Ângulo de rotação inicial em torno do eixo Y
+    angle_z = 0  # Ângulo de rotação inicial em torno do eixo Z
+    rotation_speed = 1  # Velocidade de rotação
+    move_speed = 2  # Velocidade de movimento
+    position = np.array([0.0, 0.0, 0.0])  # Posição do cubo
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP:
+                    rotation_speed += 0.1
+                elif event.key == pygame.K_DOWN:
+                    rotation_speed -= 0.1
+                elif event.key == pygame.K_w:
+                    position[1] += move_speed
+                elif event.key == pygame.K_s:
+                    position[1] -= move_speed
+                elif event.key == pygame.K_a:
+                    position[0] -= move_speed
+                elif event.key == pygame.K_d:
+                    position[0] += move_speed
+                elif event.key == pygame.K_q:
+                    position[2] += move_speed
+                elif event.key == pygame.K_e:
+                    position[2] -= move_speed
+
+        glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
+        
+        glPushMatrix()
+        glTranslatef(*position)
+        glRotatef(angle_x, 1, 0, 0)  # Rotaciona o cubo em torno do eixo X
+        glRotatef(angle_y, 0, 1, 0)  # Rotaciona o cubo em torno do eixo Y
+        glRotatef(angle_z, 0, 0, 1)  # Rotaciona o cubo em torno do eixo Z
+        draw_cube()
+        glPopMatrix()
+
+        draw_axes()  # Desenha os eixos
+
+        
+        pygame.display.flip()
+        
+        angle_x += rotation_speed  # Incrementa o ângulo de rotação em torno do eixo X
+        if angle_x >= 360:
+            angle_x -= 360
+        
+        angle_y += rotation_speed  # Incrementa o ângulo de rotação em torno do eixo Y
+        if angle_y >= 360:
+            angle_y -= 360
+
+        angle_z += rotation_speed  # Incrementa o ângulo de rotação em torno do eixo Z
+        if angle_z >= 360:
+            angle_z -= 360
+        
+        clock.tick(60)
+
+if __name__ == "__main__":
+    main()
