@@ -1,0 +1,9 @@
+no cenario, adcione as laterais pac man, entra e sai do outro lado, estou pensando que pode haver 
+uma sombra preta no cenario, voce deve andar pelo cenario ate encaixar com a posição exatamente 
+como esta na sombra, para encaixar e cair no proximo nivel, como aqueles brinquedos de criança que 
+encaixa formas geometricas no buraco. e no cenario use referencias do ToeJam & Earl jogo de 1991,
+e entao o jogador aprendera conceitos matematicos para passar pelos niveis. o controle sobre a forma
+do cubo é uma das principais mecanicas, aumentar e diminuir tamanho, mudar rotação, incremento do eixo
+y,x,z. respondendo charadas ou puzzles matematicos para que a sombra buraco apareça. outra referencia
+Portal (2007) puzzles de cenario, narrador genial. tambem The Stanley Parable (2013) elementos de 
+quebra da 4 parede. I am a bread (2015) objeto cmo foco e jogo baseado na fisica de interação player ambiente.

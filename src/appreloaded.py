@@ -86,7 +86,7 @@ def main():
     angle_y = 0  # Ângulo de rotação inicial em torno do eixo Y
     angle_z = 0  # Ângulo de rotação inicial em torno do eixo Z
     rotation_speed = 1  # Velocidade de rotação
-    move_speed = 2  # Velocidade de movimento
+    move_speed = 1.2  # Velocidade de movimento
     position = np.array([0.0, 0.0, 0.0])  # Posição do cubo
 
     while True:
